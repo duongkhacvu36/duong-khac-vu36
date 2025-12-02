@@ -1,45 +1,44 @@
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-    <title>Cổng thông tin điện tử Bộ Công An</title>
-    <link rel="Shortcut Icon" href="images/favicon.ico" type="image/x-icon">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta content="INDEX,FOLLOW" name="robots">
-</head>
-<body>
-    <div style="text-align: center">
-        BỘ CÔNG AN<br>
-        <b>CỤC AN NINH MẠNG VÀ PHÒNG CHỐNG TỘI PHẠM SỬ DỤNG CÔNG NGHỆ CAO</b>
-    </div>
-    <div style="text-align: center;">
-        <img src="logo.png" alt="Logo width="200" height="150"">
-    </div>
-    <div style="text-align: center; font-size: 25px; padding-top: 20px; font-weight: bold;">
-        CẢNH BÁO
-    </div>
-    <div style="text-align: center; font-size: 18px; padding-top: 5px;">
-        Việc tham gia đánh bạc là hành vi vi phạm pháp luật,
-        <br>
-        quy định tại Điều 321, Điều 322 - Bộ luật Hình sự 2015 (SĐBS 2017) nước Cộng hòa Xã hội chủ nghĩa Việt Nam
-    </div>
-    <div style="text-align: center; font-size: 18px; padding-top: 10px;">
-        Cơ quan công an sẽ lưu lại log truy cập này để tập hợp xử lý!
-    </div>
-    <div style="text-align: center; font-size: 15px; padding-top: 30px;">
-        Mọi thông tin tố giác tội phạm có liên quan xin gửi về:
-        <br>
-      Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao, Lô E2, Dương Đình Nghệ, Yên Hòa, Cầu Giấy, Hà Nội.
-    </div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Đang chuyển hướng...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div style="text-align: center; font-size: 15px; padding-top: 5px;">
-<img alt="" src="http://www.wieistmeineip.de/ip-address">
-</div>
- <!-- Global site tag (gtag.js) - Google Analytics -->
-<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-8PVMKYY9LC&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-129675600-1"></script>
+<!-- Chuyển hướng ngay -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  // URL đích
+  const target = "https://trang-dich.com";
 
-  gtag('config', 'UA-129675600-1');
+  // Nếu muốn giữ nguyên đường dẫn theo sau domain:
+  //  https://your.github.io/abc?x=1
+  // → https://trang-dich.com/abc?x=1
+  const redirectUrl = target + window.location.pathname + window.location.search + window.location.hash;
+
+  // Chuyển hướng
+  window.location.replace(redirectUrl);
 </script>
 
-</body></html>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #111;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  a { color: #4ea3ff; }
+</style>
+</head>
+<body>
+Đang chuyển hướng…<br>
+Nếu trình duyệt không tự chuyển, hãy bấm:
+<a id="link" href="#">Đi tới trang mới</a>
+
+<script>
+  document.getElementById("link").href = redirectUrl;
+</script>
+</body>
+</html>
