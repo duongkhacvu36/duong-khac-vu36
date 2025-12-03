@@ -5,15 +5,22 @@
 <title>Đang chuyển hướng...</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Chuyển hướng ngay -->
 <script>
-  // URL đích
+  // Trang đích bạn muốn chuyển hướng
   const target = "https://duongkhacvu36.github.io/";
 
-  // Nếu muốn giữ nguyên đường dẫn theo sau domain:
-  //  https://your.github.io/abc?x=1
-  // → https://trang-dich.com/abc?x=1
-  const redirectUrl = target + window.location.pathname + window.location.search + window.location.hash;
+  // Lấy path hiện tại
+  let path = window.location.pathname;
+
+  // Nếu path chứa quá nhiều dấu '/', rút gọn lại
+  path = path.replace(/\/+/g, "/");
+
+  // Nếu path chỉ là "/", thì bỏ path luôn
+  if (path === "/") path = "";
+
+  // Gom URL đích cuối cùng
+  const redirectUrl = 
+    target + path + window.location.search + window.location.hash;
 
   // Chuyển hướng
   window.location.replace(redirectUrl);
@@ -28,18 +35,20 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    text-align: center;
   }
-  a { color: #4ea3ff; }
+  a {
+    color: #4ea3ff;
+  }
 </style>
 </head>
 <body>
 Đang chuyển hướng…<br>
-Nếu trình duyệt không tự chuyển, hãy bấm:
-<a id="link" href="#">Đi tới trang mới</a>
+Nếu trình duyệt không tự chuyển, nhấn:
+<br><a id="link" href="#">Đi tới trang mới</a>
 
 <script>
   document.getElementById("link").href = redirectUrl;
 </script>
 </body>
 </html>
-
