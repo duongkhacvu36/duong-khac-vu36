@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Đang chuyển hướng...</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script>
-  // Trang đích bạn muốn chuyển hướng
-  const target = "https://duongkhacvu36.github.io";
-
-  // Lấy path hiện tại
-  let path = window.location.pathname;
-
-  // Nếu path chứa quá nhiều dấu '/', rút gọn lại
-  path = path.replace(/\/+/g, "/");
-
-  // Nếu path chỉ là "/", thì bỏ path luôn
-  if (path === "/") path = "";
-
-  // Gom URL đích cuối cùng
-  const redirectUrl = 
-    target + path + window.location.search + window.location.hash;
-
-  // Chuyển hướng
-  window.location.replace(redirectUrl);
-</script>
+<!-- Fallback: meta refresh (1s) nếu JS không chạy -->
+<meta http-equiv="refresh" content="1;url=https://trang-dich.com">
 
 <style>
-  body {
-    font-family: sans-serif;
-    background: #111;
-    color: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-  }
-  a {
-    color: #4ea3ff;
-  }
+  body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;background:#111;color:#eee;display:flex;align-items:center;justify-content:center;height:100vh;text-align:center}
+  a{color:#4ea3ff}
 </style>
 </head>
 <body>
-Đang chuyển hướng…<br>
-Nếu trình duyệt không tự chuyển, nhấn:
-<br><a id="link" href="#">Đi tới trang mới</a>
+  <div>
+    <div>Đang chuyển hướng…</div>
+    <div>Nếu trang không tự chuyển, nhấn: <a id="link" href="#">Đi tới trang mới</a></div>
+  </div>
 
 <script>
-  document.getElementById("link").href = redirectUrl;
+  try {
+    // <-- Thay URL đích tại đây -->
+    const target = "https://duongkhacvu36.github.io";
+
+    // Lấy path hiện tại và rút gọn nhiều dấu '/'
+    let path = window.location.pathname.replace(/\/+/g, "/");
+    if (path === "/") path = "";
+
+    const redirectUrl = target + path + window.location.search + window.location.hash;
+
+    // Cập nhật link nút (dùng nếu JS không redirect)
+    const linkEl = document.getElementById("link");
+    if (linkEl) linkEl.href = redirectUrl;
+
+    // Redirect bằng JS (replace để không tạo history)
+    window.location.replace(redirectUrl);
+  } catch (e) {
+    // Nếu lỗi, show lỗi lên console để debug
+    console.error("Redirect error:", e);
+  }
 </script>
+
+<noscript>
+  <!-- Nếu JS tắt, meta refresh sẽ chạy; kèm link trực tiếp -->
+  <div style="margin-top:12px;color:#aaa">JS bị tắt — bấm <a href="https://trang-dich.com">vào đây</a> để tiếp tục.</div>
+</noscript>
 </body>
 </html>
-
