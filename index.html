@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Đang chuyển hướng...</title>
-
-<!-- Fallback: meta refresh (1s) nếu JS không chạy -->
-<meta http-equiv="refresh" content="1;url=https://trang-dich.com">
+<meta charset="UTF-8">
+<title>Đang chuyển hướng…</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-  body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;background:#111;color:#eee;display:flex;align-items:center;justify-content:center;height:100vh;text-align:center}
-  a{color:#4ea3ff}
+  body {
+    background: #111;
+    color: #eee;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  a { color: #4ea3ff; }
 </style>
 </head>
 <body>
-  <div>
-    <div>Đang chuyển hướng…</div>
-    <div>Nếu trang không tự chuyển, nhấn: <a id="link" href="#">Đi tới trang mới</a></div>
-  </div>
+<div>
+  Đang chuyển hướng…<br>
+  <a id="fallback" href="#">Đi tới trang mới</a>
+</div>
 
 <script>
-  try {
-    // <-- Thay URL đích tại đây -->
-    const target = "https://duongkhacvu36.github.io";
+  // 🔥 Thay link đích tại đây
+  const TARGET = "https://facebook.com/yeuulacc";
 
-    // Lấy path hiện tại và rút gọn nhiều dấu '/'
-    let path = window.location.pathname.replace(/\/+/g, "/");
-    if (path === "/") path = "";
+  // Domain hiện tại
+  const CURRENT = window.location.origin; // https://duongkhacvu36.github.io
 
-    const redirectUrl = target + path + window.location.search + window.location.hash;
+  // Nếu target trùng domain → BLOCK để không loop
+  if (TARGET.startsWith(CURRENT)) {
+    console.warn("Redirect bị chặn (target trùng domain hiện tại) → tránh vòng lặp.");
+    document.getElementById("fallback").href = TARGET;
+  } else {
+    // Nếu khác domain → cho redirect
+    const redirectUrl =
+      TARGET +
+      window.location.pathname.replace(/\/+/g, "/") +
+      window.location.search +
+      window.location.hash;
 
-    // Cập nhật link nút (dùng nếu JS không redirect)
-    const linkEl = document.getElementById("link");
-    if (linkEl) linkEl.href = redirectUrl;
+    document.getElementById("fallback").href = redirectUrl;
 
-    // Redirect bằng JS (replace để không tạo history)
     window.location.replace(redirectUrl);
-  } catch (e) {
-    // Nếu lỗi, show lỗi lên console để debug
-    console.error("Redirect error:", e);
   }
 </script>
-
-<noscript>
-  <!-- Nếu JS tắt, meta refresh sẽ chạy; kèm link trực tiếp -->
-  <div style="margin-top:12px;color:#aaa">JS bị tắt — bấm <a href="https://trang-dich.com">vào đây</a> để tiếp tục.</div>
-</noscript>
 </body>
 </html>
