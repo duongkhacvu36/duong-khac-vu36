@@ -2,4 +2,4 @@
 - # Redirect Site
 - Trang này được tạo để chuyển hướng đến:
 
-👉 https://facebook.com/xzaicogisize
+- https://facebook.com/xzaicogisize
