@@ -1,5 +1,5 @@
 - https://duongkhacvu36.github.io/duong-khac-vu36/
 - # Redirect Site
-- Trang này được tạo để chuyển hướng sang:
+- Trang này được tạo để chuyển hướng đến:
 
-👉 https://duongkhacvu36.github.io/
+👉 https://facebook.com/xzaicogisize
